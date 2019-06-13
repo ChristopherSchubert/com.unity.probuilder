@@ -6,7 +6,7 @@ namespace UnityEngine.ProBuilder.Experimental.CSG
     /// <summary>
     /// Represents a polygon face with an arbitrary number of vertices.
     /// </summary>
-    sealed class CSG_Polygon
+    public sealed class CSG_Polygon
     {
         public List<CSG_Vertex> vertices;
         public CSG_Plane plane;

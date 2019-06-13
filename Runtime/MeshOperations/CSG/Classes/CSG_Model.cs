@@ -7,7 +7,7 @@ namespace UnityEngine.ProBuilder.Experimental.CSG
     /// <summary>
     /// Representation of a mesh in CSG terms.  Contains methods for translating to and from UnityEngine.Mesh.
     /// </summary>
-    sealed class CSG_Model
+    public sealed class CSG_Model
     {
         public List<CSG_Vertex> vertices;
         public List<int> indexes;
@@ -27,6 +27,12 @@ namespace UnityEngine.ProBuilder.Experimental.CSG
             var transform = go.GetComponent<Transform>();
 
             vertices = CSG_VertexUtility.GetVertices(mesh).Select(x => transform.TransformVertex(x)).ToList();
+            indexes = new List<int>(mesh.triangles);
+        }        
+        
+        public CSG_Model(Mesh mesh)
+        {
+            vertices = CSG_VertexUtility.GetVertices(mesh).ToList();
             indexes = new List<int>(mesh.triangles);
         }
 

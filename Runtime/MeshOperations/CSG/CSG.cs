@@ -36,6 +36,37 @@ namespace UnityEngine.ProBuilder.Experimental.CSG
             CSG_Model csg_model_a = new CSG_Model(lhs);
             CSG_Model csg_model_b = new CSG_Model(rhs);
 
+            return Union(csg_model_a, csg_model_b);
+        }
+
+        /**
+         * Returns a new mesh by subtracting @rhs from @lhs.
+         */
+        public static Mesh Subtract(GameObject lhs, GameObject rhs)
+        {
+            CSG_Model csg_model_a = new CSG_Model(lhs);
+            CSG_Model csg_model_b = new CSG_Model(rhs);
+
+            return Subtract(csg_model_a, csg_model_b);
+        }
+
+        /**
+         * Return a new mesh by intersecting @lhs with @rhs.  This operation
+         * is non-commutative, so set @lhs and @rhs accordingly.
+         */
+        public static Mesh Intersect(GameObject lhs, GameObject rhs)
+        {
+            CSG_Model csg_model_a = new CSG_Model(lhs);
+            CSG_Model csg_model_b = new CSG_Model(rhs);
+
+            return Intersect(csg_model_a, csg_model_b);
+        }
+
+        /**
+         * Returns a new mesh by merging @lhs with @rhs.
+         */
+        public static Mesh Union(CSG_Model csg_model_a, CSG_Model csg_model_b)
+        {
             CSG_Node a = new CSG_Node(csg_model_a.ToPolygons());
             CSG_Node b = new CSG_Node(csg_model_b.ToPolygons());
 
@@ -49,11 +80,8 @@ namespace UnityEngine.ProBuilder.Experimental.CSG
         /**
          * Returns a new mesh by subtracting @rhs from @lhs.
          */
-        public static Mesh Subtract(GameObject lhs, GameObject rhs)
+        public static Mesh Subtract(CSG_Model csg_model_a, CSG_Model csg_model_b)
         {
-            CSG_Model csg_model_a = new CSG_Model(lhs);
-            CSG_Model csg_model_b = new CSG_Model(rhs);
-
             CSG_Node a = new CSG_Node(csg_model_a.ToPolygons());
             CSG_Node b = new CSG_Node(csg_model_b.ToPolygons());
 
@@ -68,11 +96,8 @@ namespace UnityEngine.ProBuilder.Experimental.CSG
          * Return a new mesh by intersecting @lhs with @rhs.  This operation
          * is non-commutative, so set @lhs and @rhs accordingly.
          */
-        public static Mesh Intersect(GameObject lhs, GameObject rhs)
+        public static Mesh Intersect(CSG_Model csg_model_a, CSG_Model csg_model_b)
         {
-            CSG_Model csg_model_a = new CSG_Model(lhs);
-            CSG_Model csg_model_b = new CSG_Model(rhs);
-
             CSG_Node a = new CSG_Node(csg_model_a.ToPolygons());
             CSG_Node b = new CSG_Node(csg_model_b.ToPolygons());
 

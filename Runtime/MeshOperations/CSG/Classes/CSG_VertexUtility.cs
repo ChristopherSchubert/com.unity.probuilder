@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace UnityEngine.ProBuilder.Experimental.CSG
 {
-	static class CSG_VertexUtility
+	public static class CSG_VertexUtility
 	{
         /// <summary>
         /// Allocate and fill all attribute arrays. This method will fill all arrays, regardless of whether or not real data populates the values (check what attributes a Vertex contains with HasAttribute()).

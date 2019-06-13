@@ -6,7 +6,7 @@ using UnityEngine.ProBuilder;
 
 namespace UnityEngine.ProBuilder.Experimental.CSG
 {
-    sealed class CSG_Node
+    public sealed class CSG_Node
     {
         public List<CSG_Polygon> polygons;
 
